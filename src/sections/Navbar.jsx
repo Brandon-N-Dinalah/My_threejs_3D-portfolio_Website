@@ -28,7 +28,7 @@ const Navbar = () => {
             
             <div className="max-w-7xl mx-auto">
                 <div className="flex items-center justify-between py-5 mx-auto c-space">
-                    <a href= "/" className= "text-neutral-400 font-bold text-2xl hover:text-white transition-colors">
+                    <a href="/" className="text-neutral-400 font-bold text-3xl hover:text-white transition-colors">
                         Brandon
                     </a>
 

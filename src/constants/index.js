@@ -58,11 +58,11 @@ export const clientReviews = [
 
 export const myProjects = [
     {
-        title: 'Podcastr - AI Podcast Platform',
-        desc: 'Podcastr is a revolutionary Software-as-a-Service platform that transforms the way podcasts are created. With advanced AI-powered features like text-to-multiple-voices functionality, it allows creators to generate diverse voiceovers from a single text input.',
+        title: 'Gemini-Clone - AI chat bot',
+        desc: 'This project was my attempt at the AI niche and trend.',
         subdesc:
-            'Built as a unique Software-as-a-Service app with Next.js 14, Tailwind CSS, TypeScript, Framer Motion and Convex, Podcastr is designed for optimal performance and scalability.',
-        href: 'https://www.youtube.com/watch?v=zfAb95tJvZQ',
+            ' Built with React 16, Tailwind CSS, Node js, Firebase, and Google API.By uitilizing Google API for the chat bot, and React for an intuitive and interactive front-end, with node js for handling the back-end',
+        href: 'https://clone-gemini.vercel.app/',
         texture: '/textures/project/project1.mp4',
         logo: '/assets/project-logo1.png',
         logoStyle: {
@@ -86,11 +86,6 @@ export const myProjects = [
                 id: 3,
                 name: 'TypeScript',
                 path: '/assets/typescript.png',
-            },
-            {
-                id: 4,
-                name: 'Framer Motion',
-                path: '/assets/framer.png',
             },
         ],
     },
@@ -249,7 +244,7 @@ export const myProjects = [
 export const calculateSizes = (isSmall, isMobile, isTablet) => {
     return {
         deskScale: isSmall ? 0.05 : isMobile ? 0.063 : 0.077,
-        deskPosition: isMobile ? [0.60, -3.5, 0] : [0.31, -6.0, 0],
+        deskPosition: isMobile ? [0.60, -3.5, 0] : [0.31, -7.2, 0],
         cubePosition: isSmall ? [4, -5, 0] : isMobile ? [5, -5.4, 0] : isTablet ? [6, -5, 0] : [11, -5.0, 1],
         reactLogoPosition: isSmall ? [3, 4, 0] : isMobile ? [5, 7.3, 1] : isTablet ? [8, 6, 1] : [13, 6, 0],
         ringPosition: isSmall ? [-5, 7, 1] : isMobile ? [-10, 15, 0] : isTablet ? [-15, 13, 0] : [-24, 13, 0],
