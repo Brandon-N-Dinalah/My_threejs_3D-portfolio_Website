@@ -12,6 +12,16 @@ dist
 dist-ssr
 *.local
 
+# Large files and models
+3D MODELS/
+public/models/
+public/textures/
+public/icons/
+*.fbx
+*.glb
+*.gltf
+*.psd
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

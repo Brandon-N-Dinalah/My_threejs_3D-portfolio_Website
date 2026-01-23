@@ -6,12 +6,14 @@ import Cube from "../components/Cube.jsx";
 import Ring from "../components/Ring.jsx";
 import Button from "../components/Button.jsx";
 import Target from "../components/Target.jsx";
+import { ErrorBoundary } from "react-error-boundary";
 import CanvasLoader from "../components/CanvasLoader.jsx";
 import HeroCamera from "../components/HeroCamera.jsx";
 import { calculateSizes } from "../constants/index.js";
 import  HackerRoom  from "../components/HackerRoom.jsx";
 import ReactLogo from "../components/ReactLogo.jsx";
 import {Link} from "react-scroll";
+
 
 const Hero = () => {
     // Use media queries to determine screen size
@@ -32,7 +34,8 @@ const Hero = () => {
 
             <div className="w-full h-full absolute inset-0">
                 <Canvas className="w-full h-full">
-                    <Suspense fallback={<CanvasLoader />}>
+                    <ErrorBoundary fallback={<CanvasLoader />}>
+                         <Suspense fallback={<CanvasLoader />}>
                         {/* To hide controller */}
                         {/*<Leva hidden />*/}
                         <PerspectiveCamera makeDefault position={[0, 0, 30]} />
@@ -53,7 +56,9 @@ const Hero = () => {
 
                         <ambientLight intensity={1} />
                         <directionalLight position={[10, 10, 10]} intensity={0.5} />
+
                     </Suspense>
+                    </ErrorBoundary>
                 </Canvas>
             </div>
 
