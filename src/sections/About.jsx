@@ -1,12 +1,13 @@
 import Globe from "react-globe.gl";
 import Button from "../components/Button.jsx";
 import {useState} from "react";
+import { contactDetails } from "../constants/index.js";
 
 const About = () => {
     const [hasCopied, setHasCopied] = useState(false);
 
     const handleCopy = () => {
-        navigator.clipboard.writeText('nsungwebrandon@gmail.com');
+        navigator.clipboard.writeText(contactDetails.email);
         setHasCopied(true);
 
         setTimeout(() =>{
@@ -19,7 +20,10 @@ const About = () => {
             <div className="grid xl:grid-cols-3 xl:grid-rows-6 md:grid-cols-2 grid-cols-1 gap-5 h-full">
                 <div className="col-span-1 xl:row-span-3">
                     <div className="grid-container">
-                        <img src="/assets/grid1.png" alt="grid-1" className="w-full sm:h-[276px] h-fit object-contain"/>
+                        <picture>
+                            <source srcSet="/assets/grid1.webp" type="image/webp" />
+                            <img src="/assets/grid1.png" alt="grid-1" className="w-full sm:h-[276px] h-fit object-contain" loading="lazy" width="276" height="276" />
+                        </picture>
 
                         <div>
                             <p className="grid-headtext">Hi, I&apos;m Brandon</p>
@@ -32,7 +36,7 @@ const About = () => {
 
                <div className="col-span-1 xl:row-span-3">
                    <div className="grid-container">
-                       <img src="/assets/grid2.0.webp" alt="grid-2.0" className="w-full sm:w-[276px] h-fit object-contain"/>
+                       <img src="/assets/grid2.0.webp" alt="grid-2.0" className="w-full sm:w-[276px] h-fit object-contain" loading="lazy" width="276" height="276" />
 
                        <div>
                            <p className="grid-headtext">Tech Stack</p>
@@ -63,7 +67,7 @@ const About = () => {
                         </div>
                             <div>
                                 <p className="grid-headtext">
-                                    I'm very flexible with time zone communications & locations</p>
+                                    I&apos;m very flexible with time zone communications & locations</p>
                                 <p className="grid-subtext"> I&apos;m based in Lusaka, Zambia  and am open to remote work worldwide.</p>
                                 <Button name="Contact Me" isBeam containerClass="w-full mt-10" />
                             </div>
@@ -72,7 +76,10 @@ const About = () => {
 
                 <div className="xl:col-span-2 xl:row-span-3">
                     <div className="grid-container">
-                    <img src="/assets/grid3.png" alt="grid-3" className="w-full sm:h-[266px] h-fit object-contain"/>
+                    <picture>
+                        <source srcSet="/assets/grid3.webp" type="image/webp" />
+                        <img src="/assets/grid3.png" alt="grid-3" className="w-full sm:h-[266px] h-fit object-contain" loading="lazy" width="266" height="266"/>
+                    </picture>
                         <div>
                             <p className="grid-headtext"> My passion for programming and technology</p>
                             <p className="grid-subtext"> I love solving problems, being innovative, and building things through code. Programming and technology aren&apos;t just my profession,but my passion too. I enjoy exploring new technologies, and enhancing my skills.</p>
@@ -82,13 +89,16 @@ const About = () => {
 
                 <div className="xl:col-span-1 xl:row-span-2">
                     <div className="grid-container">
-                        <img src="/assets/grid4.png" alt="grid-4" className="w-full md:h-[126px] sm:h-[276px] h-fit object-cover sm:object-top "/>
+                        <picture>
+                            <source srcSet="/assets/grid4.webp" type="image/webp" />
+                            <img src="/assets/grid4.png" alt="grid-4" className="w-full md:h-[126px] sm:h-[276px] h-fit object-cover sm:object-top " loading="lazy" width="276" height="126" />
+                        </picture>
 
                         <div className="space-y-2">
                             <p className="grid-subtext text-center">Contact me</p>
                             <div className="copy-container" onClick={handleCopy}>
-                                 <img src={hasCopied ? 'assets/tick.svg' : 'assets/copy.svg'} alt="copy" />
-                                    <p className="lg:text-2xl md:text-xl font-medium text-gray_gradient text-white">nsungwebrandon@gmail.com</p>
+                                 <img src={hasCopied ? 'assets/tick.svg' : 'assets/copy.svg'} alt="copy" loading="lazy" width="24" height="24"/>
+                                    <p className="lg:text-2xl md:text-xl font-medium text-gray_gradient text-white">{contactDetails.email}</p>
                             </div>
                         </div>
                     </div>

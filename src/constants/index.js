@@ -1,22 +1,22 @@
 export const navLinks = [
     {
         id: 1,
-        href: '/home',
+        href: 'home',
         name: 'Home',
     },
     {
         id: 2,
-        href: '/about',
+        href: 'about',
         name: 'About',
     },
     {
         id: 3,
-        href: '/work',
+        href: 'work',
         name: 'Work',
     },
     {
         id: 4,
-        href: '/contact',
+        href: 'contact',
         name: 'Contact',
     },
 ];
@@ -281,3 +281,9 @@ export const workExperiences = [
         animation: 'salute',
     },
 ];
+
+export const contactDetails = {
+    email: 'bndlabs.023@gmail.com',
+    personalEmail: 'nsungwebrandon@gmail.com',
+    whatsappUrl: 'https://wa.me/260767905909'
+};

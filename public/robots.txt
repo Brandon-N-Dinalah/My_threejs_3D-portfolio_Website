@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://brandon-dinalah.vercel.app/sitemap.xml

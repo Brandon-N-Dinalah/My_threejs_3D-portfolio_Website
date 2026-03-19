@@ -24,7 +24,7 @@ const Projects = () => {
         })
     }
     return (
-        <section className="c-space my-20">
+        <section className="c-space my-20" id="projects">
             <p className="head-text">My Work</p>
 
             <div className="grid lg:grid-cols-2 grid-cols-1 mt-12 gap-5 w-full">
@@ -33,12 +33,18 @@ const Projects = () => {
                py-10 px-5 shadow-2xl shadow-black-200">
 
                 <div className="absolute top-0 right-0">
-                    <img src={currentProject.spotlight} alt="spotlight" className="w-full h-96 object-cover rounded-xl"/>
+                    <picture>
+                        <source srcSet={currentProject.spotlight.replace(/\.(png|jpe?g)$/i, '.webp')} type="image/webp" />
+                        <img src={currentProject.spotlight} alt="spotlight" className="w-full h-96 object-cover rounded-xl" loading="lazy" width="800" height="384"/>
+                    </picture>
                 </div>
 
                    <div className="p-3 backdrop-filter backdrop-blur-3xl w-fit rounded-lg"
                    style={currentProject.logoStyle}>
-                    <img src={currentProject.logo} alt="logo" className="w-10 h-10 shadow-sm"/>
+                    <picture>
+                        <source srcSet={currentProject.logo.replace(/\.(png|jpe?g)$/i, '.webp')} type="image/webp" />
+                        <img src={currentProject.logo} alt="logo" className="w-10 h-10 shadow-sm" loading="lazy" width="40" height="40"/>
+                    </picture>
                    </div>
 
                    <div className="flex flex-col gap-5 text-white-600 my my-5">
@@ -52,15 +58,21 @@ const Projects = () => {
                         {currentProject.tags.map(
                             (tag, index) => (
                                 <div key={index} className="tech-logo">
-                                    <img src={tag.path} alt={tag.name}/>
+                                    <picture>
+                                        {tag.path.match(/\.(png|jpe?g)$/i) && <source srcSet={tag.path.replace(/\.(png|jpe?g)$/i, '.webp')} type="image/webp" />}
+                                        <img src={tag.path} alt={tag.name} loading="lazy" width="30" height="30"/>
+                                    </picture>
                                 </div>
 
                             ))}
                     </div>
 
-                       <a className="flex items-center gap-2 cursor-pointer text-white-600">
+                       <a className="flex items-center gap-2 cursor-pointer text-white-600" href={currentProject.href} target="_blank" rel="noreferrer">
                            <p>Check Out Project</p>
-                           <img src="/assets/arrow-up.png" className="w-3 h-3" alt="arrow" href={currentProject.href} target="_blank" rel="noreferrer"/>
+                           <picture>
+                               <source srcSet="/assets/arrow-up.webp" type="image/webp" />
+                               <img src="/assets/arrow-up.png" className="w-3 h-3" alt="arrow" loading="lazy" width="12" height="12"/>
+                           </picture>
                        </a>
 
                    </div>
@@ -68,11 +80,17 @@ const Projects = () => {
                    <div className="flex justify-between items-center mt-7">
                         <button className="arrow-btn"
                         onClick={() => handleNavigation('previous')}>
-                            <img src="/assets/left-arrow.png" alt="left arrow" className="w-4 h-4" />
+                            <picture>
+                                <source srcSet="/assets/left-arrow.webp" type="image/webp" />
+                                <img src="/assets/left-arrow.png" alt="left arrow" className="w-4 h-4" loading="lazy" width="16" height="16" />
+                            </picture>
                         </button>
                        <button className="arrow-btn"
                         onClick={() => handleNavigation('next')}>
-                            <img src="/assets/right-arrow.png" alt="right arrow" className="w-4 h-4" />
+                            <picture>
+                                <source srcSet="/assets/right-arrow.webp" type="image/webp" />
+                                <img src="/assets/right-arrow.png" alt="right arrow" className="w-4 h-4" loading="lazy" width="16" height="16" />
+                            </picture>
                         </button>
                    </div>
                </div  >

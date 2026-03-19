@@ -1,6 +1,6 @@
-import { useState} from "react";
+import { useState, useEffect } from "react";
 import {navLinks} from "../constants/index.js";
-import { Link } from "react-router-dom";
+import { Link } from "react-scroll";
 
 
 const NavLinks = () => {
@@ -8,8 +8,12 @@ const NavLinks = () => {
         <ul className="nav-ul">
             {navLinks.map(({id, href, name}) => (
                 <li key={id} className="nav-li">
-                    <Link to ={href}
-                       className="nav-li_a">
+                    <Link to={href}
+                       smooth={true}
+                       duration={500}
+                       spy={true}
+                       offset={-80}
+                       className="nav-li_a cursor-pointer">
                         {name}
                     </Link>
                 </li>
@@ -23,6 +27,21 @@ const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const toggleMenu = () => setIsOpen((prevIsOpen) => !prevIsOpen );
 
+    useEffect(() => {
+        const handleKeyDown = (e) => {
+            if (e.key === 'Escape') setIsOpen(false);
+        };
+        const handleClickOutside = (e) => {
+            if (isOpen && !e.target.closest('header')) setIsOpen(false);
+        };
+        window.addEventListener('keydown', handleKeyDown);
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            window.removeEventListener('keydown', handleKeyDown);
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [isOpen]);
+
     return (
         <header className= "fixed top-0 left-0 right-0 z-50 bg-black/90">
             
@@ -35,7 +54,7 @@ const Navbar = () => {
                     <button onClick={toggleMenu}
                             className = "text-neutral-400 hover:text-white focus:outline-none sm:hidden flex" aria-label="Toggle menu">
                         <img src={isOpen ? "/assets/close.svg" : "/assets/menu.svg"}
-                             alt="toggle" className = "w-6 h-6"/>
+                             alt="toggle" className="w-6 h-6" width="24" height="24"/>
                     </button>
 
                      <nav className="sm:flex hidden">

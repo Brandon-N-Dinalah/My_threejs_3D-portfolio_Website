@@ -1,4 +1,4 @@
-import { useGLTF } from "@react-three/drei";
+
 import { useRef, useEffect } from "react";
 import gsap from "gsap";
 
@@ -17,6 +17,11 @@ const Target = (props) => {
   // Simple bounce animation without model loading
   useEffect(() => {
     if (!targetRef.current) return;
+
+    const prefersReducedMotion = window.matchMedia(
+      '(prefers-reduced-motion: reduce)'
+    ).matches;
+    if (prefersReducedMotion) return;
 
     const anim = gsap.to(targetRef.current.position, {
       y: targetRef.current.position.y + 0.5,

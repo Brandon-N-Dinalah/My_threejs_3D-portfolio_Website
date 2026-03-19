@@ -9,7 +9,7 @@ const Experience = () => {
     // State to manage the developer's animation
     const [animationName, setAnimationName] = useState('idle')
     return (
-        <section className="c-space my-20">
+        <section className="c-space my-20" id="work">
             <div className="w-full text-white-600">
                 {/* Section title */}
                 <h3 className='head-text'> My Work Experience</h3>
@@ -45,7 +45,10 @@ const Experience = () => {
                                      onPointerOut={() => setAnimationName("idle")}>
                                     <div className="flex flex-col h-full justify-start items-center py-2">
                                         <div className="work-content_logo">
-                                            <img src={icon} alt="logo" className="w-full h-full "/>
+                                            <picture>
+                                                <source srcSet={icon.replace(/\.(png|jpe?g)$/i, '.webp')} type="image/webp" />
+                                                <img src={icon} alt="logo" className="w-full h-full" loading="lazy" width="64" height="64" />
+                                            </picture>
                                         </div>
                                         <div className="work-content_bar"/>
                                     </div>
