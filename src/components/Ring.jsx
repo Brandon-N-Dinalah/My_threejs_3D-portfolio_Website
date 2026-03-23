@@ -12,7 +12,7 @@ const Ring = ({ position }) => {
         }
     }, []);
 
-    const texture = useTexture('textures/rings.webp');
+    const texture = useTexture('textures/rings.png');
 
     useGSAP(
         () => {

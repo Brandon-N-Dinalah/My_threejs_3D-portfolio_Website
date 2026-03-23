@@ -100,6 +100,6 @@ Developer.propTypes = {
     animationName: PropTypes.string,
 };
 
-useGLTF.preload('/models/animations/developer.glb')
+useGLTF.preload('/models/human/developer.glb')
 
 export default Developer;
