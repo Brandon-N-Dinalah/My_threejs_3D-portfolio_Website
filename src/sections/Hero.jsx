@@ -13,6 +13,7 @@ import { calculateSizes } from "../constants/index.js";
 import  HackerRoom  from "../components/HackerRoom.jsx";
 import ReactLogo from "../components/ReactLogo.jsx";
 import {Link} from "react-scroll";
+import FloatingBackground from "../components/FloatingBackground.jsx";
 
 
 const Hero = () => {
@@ -25,7 +26,10 @@ const Hero = () => {
 
     return (
         <section className="min-h-screen w-full flex flex-col relative" id="home"  >
-            <div className="w-full mx-auto flex flex-col sm:mt-36 mt-20 c-space gap-3">
+            {/* Floating background elements */}
+            <FloatingBackground />
+            
+            <div className="w-full mx-auto flex flex-col sm:mt-36 mt-20 c-space gap-3 relative z-10">
                 <div className="mx-auto flex items-center justify-center gap-2 rounded-full border border-black-300 bg-black-200 px-4 py-2 w-fit sm:mb-2 shadow-lg group">
                     <div className="relative flex h-3 w-3">
                         <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75"></span>
@@ -39,7 +43,7 @@ const Hero = () => {
                 <p className="hero_tag text-gray_gradient">I Build Growth Systems for Zambian Businesses</p>
             </div>
 
-            <div className="w-full h-full absolute inset-0">
+            <div className="w-full h-full absolute inset-0 z-0">
                 <Canvas className="w-full h-full">
                     <ErrorBoundary fallback={<CanvasLoader />}>
                          <Suspense fallback={<CanvasLoader />}>
