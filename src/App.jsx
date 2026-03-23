@@ -2,6 +2,7 @@ import Navbar from "./sections/Navbar.jsx";
 import Hero from "./sections/Hero.jsx";
 import { lazy, Suspense } from "react";
 import SectionLoader from "./components/SectionLoader.jsx";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const About = lazy(() => import('./sections/About.jsx'));
 const Projects = lazy(() => import('./sections/Projects.jsx'));
