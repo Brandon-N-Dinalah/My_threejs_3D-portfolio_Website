@@ -1,6 +1,6 @@
 import Globe from "react-globe.gl";
 import Button from "../components/Button.jsx";
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import { contactDetails } from "../constants/index.js";
 
 const About = () => {
@@ -15,39 +15,66 @@ const About = () => {
         }, 2000);
     };
 
+    useEffect(() => {
+        const cards = document.querySelectorAll('.grid-container');
+
+        const handleMouseMove = (e) => {
+            const rect = e.currentTarget.getBoundingClientRect();
+            const x = ((e.clientX - rect.left) / rect.width) * 100;
+            const y = ((e.clientY - rect.top) / rect.height) * 100;
+            e.currentTarget.style.setProperty('--mouse-x', `${x}%`);
+            e.currentTarget.style.setProperty('--mouse-y', `${y}%`);
+        };
+
+        const handleMouseLeave = (e) => {
+            e.currentTarget.style.setProperty('--mouse-x', '50%');
+            e.currentTarget.style.setProperty('--mouse-y', '50%');
+        };
+
+        cards.forEach(card => {
+            card.addEventListener('mousemove', handleMouseMove);
+            card.addEventListener('mouseleave', handleMouseLeave);
+        });
+
+        return () => {
+            cards.forEach(card => {
+                card.removeEventListener('mousemove', handleMouseMove);
+                card.removeEventListener('mouseleave', handleMouseLeave);
+            });
+        };
+    }, []);
+
     return (
         <section className="c-space my-20" id="about">
             <div className="grid xl:grid-cols-3 xl:grid-rows-6 md:grid-cols-2 grid-cols-1 gap-5 h-full">
                 <div className="col-span-1 xl:row-span-3">
-                    <div className="grid-container">
-                        <picture>
+                    <div className="grid-container grid-container--profile">
+                        <picture className="profile-img-container flex justify-center h-full">
                             <source srcSet="/assets/grid1.webp" type="image/webp" />
                             <img src="/assets/grid1.png" alt="grid-1" className="w-full sm:h-[276px] h-fit object-contain" loading="lazy" width="276" height="276" />
                         </picture>
 
                         <div>
                             <p className="grid-headtext">Hi, I&apos;m Brandon</p>
-                            <p className="grid-subtext">With 3 years of experience in the tech industry,
-                                I have honed my skills in frontend development, with a focus on web technologies,
-                                UI/UX design, graphic design, and app development.</p>
+                            <p className="grid-subtext">I co-founded BND Labs to solve a problem I kept seeing — Zambian businesses spending on marketing that never compounds. We build the systems that change that: consistent leads, clear processes, and measurable growth.</p>
                         </div>
                     </div>
                 </div>
 
                <div className="col-span-1 xl:row-span-3">
-                   <div className="grid-container">
+                   <div className="grid-container grid-container--tech">
                        <img src="/assets/grid2.0.webp" alt="grid-2.0" className="w-full sm:w-[276px] h-fit object-contain" loading="lazy" width="276" height="276" />
 
                        <div>
-                           <p className="grid-headtext">Tech Stack</p>
-                           <p className="grid-subtext">I specialize in a variety of languages, frameworks, and tools as well as other technologies that allow me to build robust and scalable applications.</p>
+                           <p className="grid-headtext">How We Build</p>
+                           <p className="grid-subtext">We combine strategy, design, automation, and development into one integrated system. Every tool we use serves a single goal: making your business easier to find, trust, and contact.</p>
                        </div>
                    </div>
                </div>
 
                 <div className="col-span-1 xl:row-span-4">
-                    <div className="grid-container">
-                        <div className="rounded-3xl w-full sm:h-[326px] h-fit flex justify-center items-center">
+                    <div className="grid-container grid-container--globe">
+                        <div className="rounded-3xl w-full sm:h-[326px] h-fit flex justify-center items-center globe-wrapper">
                         <Globe
                         height={326}
                         width={326}
@@ -66,9 +93,8 @@ const About = () => {
                         />
                         </div>
                             <div>
-                                <p className="grid-headtext">
-                                    I&apos;m very flexible with time zone communications & locations</p>
-                                <p className="grid-subtext"> I&apos;m based in Lusaka, Zambia  and am open to remote work worldwide.</p>
+                                <p className="grid-headtext">Based in Lusaka. Built for Zambia.</p>
+                                <p className="grid-subtext">We're a Zambian-built agency working with businesses across Lusaka and beyond. Every system we build is designed for the local market — and engineered to scale.</p>
                                 <Button name="Contact Me" isBeam containerClass="w-full mt-10" />
                             </div>
                     </div>

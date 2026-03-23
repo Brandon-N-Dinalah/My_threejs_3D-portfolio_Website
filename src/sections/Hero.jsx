@@ -34,9 +34,9 @@ const Hero = () => {
                     <span className="text-sm font-medium text-white-600">Taking on clients — Q2 2026</span>
                 </div>
                 <p className="sm:text-3xl text-2xl font-medium text-white text-center font-generalsans">
-                    Hi, I am Brandon <span className="waving-hand">👋</span>
+                    Hi, I'm Brandon — Co-founder of BND Labs <span className="waving-hand">👋</span>
                 </p>
-                <p className="hero_tag text-gray_gradient">I Build Websites, Products and Brands</p>
+                <p className="hero_tag text-gray_gradient">I Build Growth Systems for Zambian Businesses</p>
             </div>
 
             <div className="w-full h-full absolute inset-0">
@@ -53,10 +53,12 @@ const Hero = () => {
                         </HeroCamera>
 
                         <group>
+                            {/* Removed: tech icon decorations — brand repositioning
                             <Target position={sizes.targetPosition} />
                             <Ring position={sizes.ringPosition} />
                             <Cube position={sizes.cubePosition} />
                             <ReactLogo position={sizes.reactLogoPosition}/>
+                            */}
                         </group>
 
                         <ambientLight intensity={1} />
