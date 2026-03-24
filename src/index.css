@@ -70,7 +70,14 @@ body {
     }
 
     .text-gray_gradient {
-        @apply bg-gradient-to-r from-[#BEC1CF] from-60% via-[#D5D8EA] via-60% to-[#D5D8EA] to-100% bg-clip-text text-transparent;
+        @apply bg-gradient-to-r from-[#BEC1CF] via-[#D5D8EA] to-[#BEC1CF] bg-clip-text text-transparent;
+        background-size: 200% auto;
+        animation: textShine 5s linear infinite;
+    }
+
+    @keyframes textShine {
+        0% { background-position: 0% center; }
+        100% { background-position: 200% center; }
     }
 
     /* button component */
@@ -88,7 +95,7 @@ body {
 
     /* hero section */
     .hero_tag {
-        @apply text-center xl:text-6xl md:text-5xl sm:text-4xl text-3xl font-generalsans font-black !leading-normal;
+        @apply text-center xl:text-7xl md:text-6xl sm:text-5xl text-4xl font-generalsans font-bold tracking-tighter !leading-tight;
     }
 
     /* about section */

@@ -24,8 +24,8 @@ const Hero = () => {
     const sizes = useMemo(() => calculateSizes(isSmall, isMobile, isTablet), [isSmall, isMobile, isTablet]);
 
     return (
-        <section className="min-h-screen w-full flex flex-col relative" id="home"  >
-            <div className="w-full mx-auto flex flex-col sm:mt-36 mt-20 c-space gap-3">
+        <section className="min-h-screen w-full flex flex-col relative" id="home">
+            <div className="w-full mx-auto flex flex-col sm:mt-32 mt-20 c-space gap-3 z-10">
                 <div className="mx-auto flex items-center justify-center gap-2 rounded-full border border-black-300 bg-black-200 px-4 py-2 w-fit sm:mb-2 shadow-lg group">
                     <div className="relative flex h-3 w-3">
                         <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75"></span>
@@ -34,37 +34,34 @@ const Hero = () => {
                     <span className="text-sm font-medium text-white-600">Taking on clients — Q2 2026</span>
                 </div>
                 <p className="sm:text-3xl text-2xl font-medium text-white text-center font-generalsans">
-                    Hi, I'm Brandon — Co-founder of BND Labs <span className="waving-hand">👋</span>
+                    Hi, I'm Brandon — Co-founder of <span className="text-white-800">BND Labs</span> <span className="waving-hand">👋</span>
                 </p>
                 <p className="hero_tag text-gray_gradient">I Build Growth Systems for Zambian Businesses</p>
             </div>
 
-            <div className="w-full h-full absolute inset-0">
+            <div className="w-full h-full absolute inset-0 z-0">
                 <Canvas className="w-full h-full">
                     <ErrorBoundary fallback={<CanvasLoader />}>
-                         <Suspense fallback={<CanvasLoader />}>
-                        <PerspectiveCamera makeDefault position={[0, 0, 30]} />
+                        <Suspense fallback={<CanvasLoader />}>
+                            <PerspectiveCamera makeDefault position={[0, 0, 30]} />
 
-                        <HeroCamera isMobile={isMobile}>
-                            <HackerRoom
-                                scale={sizes.deskScale}
-                                position={sizes.deskPosition}
-                                rotation={[0.35, -Math.PI, 0]} />
-                        </HeroCamera>
+                            <HeroCamera isMobile={isMobile}>
+                                <HackerRoom
+                                    scale={sizes.deskScale}
+                                    position={sizes.deskPosition}
+                                    rotation={[0.1, -Math.PI, 0]} />
+                            </HeroCamera>
 
-                        <group>
-                            {/* Removed: tech icon decorations — brand repositioning
-                            <Target position={sizes.targetPosition} />
-                            <Ring position={sizes.ringPosition} />
-                            <Cube position={sizes.cubePosition} />
-                            <ReactLogo position={sizes.reactLogoPosition}/>
-                            */}
-                        </group>
+                            <group>
+                                <Target position={sizes.targetPosition} />
+                                <ReactLogo position={sizes.reactLogoPosition}/>
+                                <Ring position={sizes.ringPosition} />
+                                <Cube position={sizes.cubePosition} />
+                            </group>
 
-                        <ambientLight intensity={1} />
-                        <directionalLight position={[10, 10, 10]} intensity={0.5} />
-
-                    </Suspense>
+                            <ambientLight intensity={1} />
+                            <directionalLight position={[10, 10, 10]} intensity={0.5} />
+                        </Suspense>
                     </ErrorBoundary>
                 </Canvas>
             </div>
